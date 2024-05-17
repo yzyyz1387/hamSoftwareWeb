@@ -140,27 +140,28 @@ export default {
     this.applySearchFilter();
   },
     applySearchFilter() {
-    let searchKey = this.searchKey.toLowerCase();
-    let apps = this.originalApps;
-    let filteredApps = {};
-    if (searchKey === '') {
-      this.apps = { ...apps };
-      return;
-    }
-    for (const [key, value] of Object.entries(apps)) {
-      if (value.name.toLowerCase().includes(searchKey) || value.dec.toLowerCase().includes(searchKey) || value.url.toLowerCase().includes(searchKey)) {
-        filteredApps[key] = value;
-      } else {
-        for (const [key_, value_] of Object.entries(value)) {
-          if (typeof value_ === 'string' && value_.toLowerCase().includes(searchKey)) {
-            filteredApps[key] = value;
-            break;
+      let searchKey = this.searchKey.toLowerCase().split('');
+      let apps = this.originalApps;
+      let filteredApps = {};
+      if (searchKey[0] === '') {
+        this.apps = { ...apps };
+        return;
+      }
+      for (const [key, value] of Object.entries(apps)) {
+        let valueStr = value.name.toLowerCase() + value.dec.toLowerCase() + value.url.toLowerCase();
+        if (searchKey.every(word => new RegExp(word).test(valueStr))) {
+          filteredApps[key] = value;
+        } else {
+          for (const [key_, value_] of Object.entries(value)) {
+            if (typeof value_ === 'string' && searchKey.every(word => new RegExp(word).test(value_.toLowerCase()))) {
+              filteredApps[key] = value;
+              break;
+            }
           }
         }
       }
-    }
-    this.apps = filteredApps;
-  },
+      this.apps = filteredApps;
+    },
     async updateData(platform){
       let dataUrlMap={ 
         'm': 'https://jsd.seeku.site/yzyyz1387/hamSoftware/res-m.json',
