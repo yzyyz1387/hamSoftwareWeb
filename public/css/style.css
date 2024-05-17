@@ -1,0 +1,382 @@
+/* @font-face {
+    font-family: '03';
+    src:url('https://cdn.statically.io/gh/yzyyz1387/blogimages/1ecd9c12/hhh/03.ttf');
+} */
+
+* {
+    padding: 0;
+    margin: 0;
+    /* font-family: '03'; */
+   
+
+}
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+    text-decoration: none;
+    color: #e67e22;
+
+}
+
+i{
+    font-size: 1.4em !important;
+}
+
+.router-link {
+    padding: 5px;
+    box-shadow: 0px 5px 0px #ccc;
+    transition: .3s all ease;
+    font-weight: 900;
+}
+.router-link:hover {
+
+    box-shadow: 0px 5px 0px #3897fc59;
+
+}
+
+
+.active {
+    box-shadow: 0px 5px 0px #3898fc
+}
+
+.router-link:not(:first-child){
+    margin-left: 50px;
+}
+r
+
+h3 {
+    margin: 50px 0 15px 0;
+    font-size: 2em;
+}
+
+html.sr .load-hidden {
+    visibility: hidden;
+}
+
+/* 
+a:hover{
+   text-decoration: underline;
+} */
+.button:hover {
+    text-decoration: none;
+}
+
+.top {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    /*background: #9795950e;*/
+    /*box-shadow: #464444 0 5px 5px 2px;*/
+}
+
+.flex-div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-div-col {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.grid-div {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 50px;
+
+}
+.grid-one{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 50px;
+}
+
+.web-title {
+    height: 100%;
+    font-size: 3em;
+
+}
+
+.apps {
+    position: relative;
+
+}
+
+
+.app-list {
+    margin-top: 60px;
+    position: relative;
+    /*background-color: #cecece;*/
+    height: 100%;
+    width: 80vw;
+}
+
+.app {
+    height: 150px;
+    width: 100%;
+    /*background-color: #3898fc;*/
+    box-shadow: -9px 9px 39px #ccc;
+    border-radius: 15px;
+    border-width: 2px;
+    border-color: #c4c4c4;
+    transition: all .3s ease;
+    position: relative;
+}
+
+.app:hover {
+    box-shadow: 20px 20px 60px #abb1b1,
+        -20px -20px 60px #ffffff00;
+}
+
+.app-icon {
+/* height = 100%宽实际值与高相同 */
+    height: 100%;
+    width: 150px;
+    border-radius: 15px;
+}
+
+.app-info {
+    padding-bottom: 10px;
+    width: 90%;
+    height: 100%;
+    margin-left: 15px;
+    position: relative;
+}
+
+
+.app-name {
+    margin-top: 10px;
+    height: 25%;
+    font-size: 1.5em;
+    color: #888;
+}
+
+.app-detail {
+    height: 15%;
+    margin-right: 15px;
+    justify-content: left;
+    /*background-color: #3898fc;*/
+
+}
+
+.detail {
+    margin-left: 5px;
+    height: 100%;
+    background-color: #ebebeb;
+    color: #888;
+    border-radius: 5px;
+    align-content: center;
+}
+
+.detail:hover {
+    color: #3898fc;
+}
+
+.detail:first-child {
+    margin-left: 0;
+}
+
+.detail-txt {
+    padding: 0 5px 0 5px;
+    height: 100%;
+    line-height: 100%;
+    font-size: .5em;
+
+
+}
+
+.app-dec {
+
+    height: 50%;
+    color: #888;
+    margin-top: 5px;
+    position: relative;
+}
+
+.dec-txt {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+
+.related-btn,
+.download-btn {
+    height: 50px;
+    width: 50px;
+    background-color: #3898fc;
+    position: absolute;
+    bottom: -15px;
+    right: -25px;
+    border-radius: 50px;
+    align-items: center;
+    color: #fff;
+    transition: 0.2s all ease;
+}
+
+.related-btn{
+    bottom: 40px;
+    right: -25px;
+}
+.related-btn:hover,
+.download-btn:hover {
+    font-size: 1.1em;
+    background-color: #ed7008;
+}
+
+.bottom {
+    align-items: center;
+    align-content: center;
+    height: auto;
+}
+
+
+.tks {
+    margin-top: 15px;
+    width: 25%;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: #888;
+}
+
+.call{
+    font-family: Monaco, Courier New, Consolas, Menlo, monospace;
+}
+
+.copyright {
+    text-align: center;
+    align-content: center;
+    margin: 30px 0 10px 0;
+    height: 20px;
+    color: #888;
+}
+
+.note {
+    height: 50px;
+    text-align: center;
+    align-content: center;
+    margin-top: 60px;
+}
+
+.hr-ss {
+    border: 0;
+    color: #d0d0d5;
+    background: linear-gradient(currentColor, currentColor) no-repeat center;
+    background-size: calc(100% - 1.5em - 6px) 1px;
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-top: 5px;
+
+}
+
+.hr-ss::before,
+.hr-ss::after {
+    content: '';
+    display: block;
+    width: .75em;
+    height: .75em;
+    transform: rotate(45deg);
+    box-sizing: border-box;
+    border: 1px solid;
+    margin: 3px;
+}
+
+.loading {
+    margin-top: 150px;
+    width: 100px;
+}
+
+@media (max-width:1000px) {
+
+    .web-title {
+        height: 100%;
+        font-size: 1.5em;
+    
+    }
+    h3{
+        font-size: 1.2em;
+    }
+    .grid-div {
+        grid-template-columns: 1fr;
+    }
+
+    .app {
+        height: 130px;
+        width: 100%;
+    }
+    
+    .app-info{
+        white-space: nowrap;
+        container-type: inline-size;
+        resize: horizontal;
+        margin-left: 5px;
+    }
+
+    .app-name {
+        margin-top: 10px;
+        height: 25%;
+        font-size: 1em;
+        font-weight: 800;
+    }
+    .app-dec {
+        font-size: .8em;
+    }
+    .detail{
+        font-size: .8em;
+    }
+    .detail-txt{
+        font-size: .6em;
+        text-overflow: ellipsis;
+
+    }
+
+
+
+    .app-icon {
+            width: 130px;
+        }
+    .related-btn,
+    .download-btn {
+        height: 40px;
+        width: 40px;
+        bottom: -10px;
+        right: -20px;
+    }
+    .related-btn{
+        bottom: 40px;
+    }
+    .hr-ss {
+        width: 50%;
+        }
+    .hr-ss::before,
+    .hr-ss::after {
+        width: .5em;
+        height: .5em;
+        transform: rotate(45deg);
+    }
+    .tks{
+            grid-template-columns: 1fr 1fr;
+
+        }
+    .copyright{
+        font-size: .8em;
+    }
+
+}
