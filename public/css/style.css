@@ -320,6 +320,7 @@ a:hover{
     .app {
         height: 130px;
         width: 100%;
+        position: relative;
     }
     
     .app-info{
