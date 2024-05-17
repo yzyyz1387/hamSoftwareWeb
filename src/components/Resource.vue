@@ -140,7 +140,13 @@ export default {
     this.applySearchFilter();
   },
     applySearchFilter() {
-      let searchKey = this.searchKey.toLowerCase().split('');
+      let searchKey = this.searchKey.toLowerCase();
+      let isChinese = /[\u4e00-\u9fa5]/.test(searchKey);
+      if (isChinese) {
+        searchKey = searchKey.split('');
+      } else {
+        searchKey = [searchKey];
+      }
       let apps = this.originalApps;
       let filteredApps = {};
       if (searchKey[0] === '') {
