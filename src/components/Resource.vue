@@ -7,7 +7,7 @@
             
             <div class="app-list" :class="gridClass">
             <div class="app flex-div " v-for="(item,i) in apps" :key="i">
-                <img :src="loadImg(item.icon)" alt="" class="app-icon" @error="setDefaultImage">
+              <img :src="imgSrcs[i]" alt="" class="app-icon" @error="setDefaultImage">
                 <div class="app-info">
                     <p class="app-name ">
                         {{ item.name }}
@@ -28,10 +28,10 @@
                             {{ item.dec }}
                         </p>
                         <a v-if="item.url" :href="item.url" target="_blank" class="download-btn flex-div">
-                            <i class="fa fa-arrow-down" aria-hidden="true" /></i>
+                            <i class="fa fa-arrow-down" aria-hidden="true" ></i>
                         </a>
                         <a v-if="item['related-url']" :href="item['related-url']" target="_blank" class="related-btn flex-div" title="相关链接">
-                            <i :class="getClass(item['related-url'])"  aria-hidden="true" /></i>
+                            <i :class="getClass(item['related-url'])"  aria-hidden="true" ></i>
                         </a>
                     </div>
                 </div>
@@ -62,6 +62,7 @@ export default {
   data(){
     return {
       apps: {},
+      imgSrcs: {},
       originalApps:{},
       gridClass: 'grid-div',
       searchKey:'',
@@ -69,7 +70,13 @@ export default {
   },
   created() {
     const platform = this.$route.params.platform;
-    this.fetchAndSetAppsData(platform);
+    this.fetchAndSetAppsData(platform).then(() => {
+      for (const [key, item] of Object.entries(this.apps)) {
+        this.loadImg(item.icon).then(imgSrc => {
+          this.$set(this.imgSrcs, key, imgSrc);
+        });
+      }
+    });
 
   },
   watch: {
@@ -80,7 +87,7 @@ export default {
     apps: 
     {
       immediate: true,
-      handler: function(newApps) {
+      handler: function() {
       this.girdControl();
       },
     },
@@ -100,19 +107,23 @@ export default {
       event.target.src = defaultImage;
     },
     loadImg(icon){
-      let imgSrc;
-      const urlPattern = /^(http|https):\/\/[a-zA-Z0-9\\-\\.]+(\.[a-zA-Z]{2,})+(\/\S*)?$/;
-      if (urlPattern.test(icon)) {
-        return icon;
-      }
-        try {
-          imgSrc = require('../assets/' + icon);
-        } catch (error) {
-          imgSrc = require('../assets/crying_img.png');
+        const urlPattern = /^(http|https):\/\/[a-zA-Z0-9\\-\\.]+(\.[a-zA-Z]{2,})+(\/\S*)?$/;
+        if (urlPattern.test(icon)) {
+          return Promise.resolve(icon);
         }
-        return imgSrc;
-
-    },
+        let temp_ = 'https://jsd.seeku.site/yzyyz1387/hamSoftware/img/' + icon;
+        return axios.get(temp_)
+          .then((url_)=>{
+            let imgSrc = url_.data['url'];
+            if(!imgSrc){
+              imgSrc = defaultImage;
+            }
+            return imgSrc;
+          })
+          .catch((error) => {
+            return defaultImage;
+          });
+      },
     getClass(url){
       const urlToClassMap = {
         'github': 'fa-github',
@@ -133,11 +144,19 @@ export default {
       return 'fa fa-link';
     },
   async fetchAndSetAppsData(platform) {
+    // 清空 imgSrcs
+    this.imgSrcs = {};
     let apps = await this.updateData(platform);
-      this.originalApps = JSON.parse(JSON.stringify(apps)); 
+    this.originalApps = JSON.parse(JSON.stringify(apps));
     this.apps = { ...apps };
     this.girdControl();
     this.applySearchFilter();
+    // 更新 imgSrcs
+    for (const [key, item] of Object.entries(this.apps)) {
+      this.loadImg(item.icon).then(imgSrc => {
+        this.$set(this.imgSrcs, key, imgSrc);
+      });
+    }
   },
     applySearchFilter() {
       let searchKey = this.searchKey.toLowerCase();
