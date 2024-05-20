@@ -2,51 +2,52 @@
   <div class="apps ">
     <div class="search">
       <input type="text" v-model="searchKey" placeholder="搜索应用名称、描述、链接" class="search-input">
-            </div>
+    </div>
     <div class="container flex-div" v-if="Object.keys(apps).length>0">
-            
-            <div class="app-list" :class="gridClass">
-            <div class="app flex-div " v-for="(item,i) in apps" :key="i">
-              <img :src="imgSrcs[i]" alt="" class="app-icon" @error="setDefaultImage">
-                <div class="app-info">
-                    <p class="app-name ">
-                        {{ item.name }}
-                    </p>
-                    <div class="app-detail flex-div ">
-                        <div class="plf detail">
-                            <span class="detail-txt"> {{ item.platform }}</span>
-                        </div>
-                        <div class="ver detail">
-                            <span  class="detail-txt">{{ item.ver }}</span>
-                        </div>
-                        <div class="lang detail">
-                            <span  class="detail-txt">{{ item["zh-CN"]?"支持中文":"无中文" }}</span>
-                        </div>
-                    </div>
-                    <div class="app-dec">
-                        <p class="dec-txt">
-                            {{ item.dec }}
-                        </p>
-                        <a v-if="item.url" :href="item.url" target="_blank" class="download-btn flex-div">
-                            <i class="fa fa-arrow-down" aria-hidden="true" ></i>
-                        </a>
-                        <a v-if="item['related-url']" :href="item['related-url']" target="_blank" class="related-btn flex-div" title="相关链接">
-                            <i :class="getClass(item['related-url'])"  aria-hidden="true" ></i>
-                        </a>
-                    </div>
-                </div>
-                    <div class="status" v-if="item.status !== undefined && item.status !== null">
-                    <span class="status-txt" :class="getStatusClass(item.status)" title="网站状态"> ● {{ item.status }}</span>
-                  </div>
+
+      <div class="app-list" :class="gridClass">
+        <div class="app flex-div " v-for="(item,i) in apps" :key="i">
+          <img :src="imgSrcs[i]" alt="" class="app-icon" @error="setDefaultImage">
+          <div class="app-info">
+            <p class="app-name ">
+              {{ item.name }}
+            </p>
+            <div class="app-detail flex-div ">
+              <div class="plf detail">
+                <span class="detail-txt"> {{ item.platform }}</span>
+              </div>
+              <div class="ver detail">
+                <span class="detail-txt">{{ item.ver }}</span>
+              </div>
+              <div class="lang detail">
+                <span class="detail-txt">{{ item["zh-CN"] ? "支持中文" : "无中文" }}</span>
+              </div>
             </div>
+            <div class="app-dec">
+              <p class="dec-txt">
+                {{ item.dec }}
+              </p>
+              <a v-if="item.url" :href="item.url" target="_blank" class="download-btn flex-div">
+                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+              </a>
+              <a v-if="item['related-url']" :href="item['related-url']" target="_blank" class="related-btn flex-div"
+                 title="相关链接">
+                <i :class="getClass(item['related-url'])" aria-hidden="true"></i>
+              </a>
             </div>
-            </div>
-              <div class="applist load flex-div-col" v-else>
-                 <img src="../assets/loading.gif" class="loading">
-                    <p  v-if="this.searchKey">搜索不到捏...</p>
-                    <p v-else>加载中...</p>
-            </div>
-            </div>
+          </div>
+          <div class="status" v-if="item.status !== undefined && item.status !== null">
+            <span class="status-txt" :class="getStatusClass(item.status)" title="网站状态"> ● {{ item.status }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="applist load flex-div-col" v-else>
+      <img src="../assets/loading.gif" class="loading">
+      <p v-if="this.searchKey">搜索不到捏...</p>
+      <p v-else>加载中...</p>
+    </div>
+  </div>
 
 </template>
 
@@ -54,18 +55,19 @@
 import axios from 'axios';
 // import scrollReveal from "scrollreveal";
 import defaultImage from '@/assets/crying_img.png';
+
 export default {
   name: "Apk",
   props: {
     platform: String,
   },
-  data(){
+  data() {
     return {
       apps: {},
       imgSrcs: {},
-      originalApps:{},
+      originalApps: {},
       gridClass: 'grid-div',
-      searchKey:'',
+      searchKey: '',
     };
   },
   created() {
@@ -84,18 +86,18 @@ export default {
       immediate: true,
       handler: 'fetchAndSetAppsData'
     },
-    apps: 
-    {
-      immediate: true,
-      handler: function() {
-      this.girdControl();
+    apps:
+        {
+          immediate: true,
+          handler: function () {
+            this.girdControl();
+          },
+        },
+    searchKey: {
+      handler: function () {
+        this.applySearchFilter();
       },
     },
-    searchKey: {
-    handler: function() {
-      this.applySearchFilter();
-    },
-  },
   },
   // mounted() {
   //   this.$nextTick(function () {
@@ -103,19 +105,19 @@ export default {
   //   })
   // },
   methods: {
-    setDefaultImage(event){
+    setDefaultImage(event) {
       event.target.src = defaultImage;
     },
-    loadImg(icon){
-        const urlPattern = /^(http|https):\/\/[a-zA-Z0-9\\-\\.]+(\.[a-zA-Z]{2,})+(\/\S*)?$/;
-        if (urlPattern.test(icon)) {
-          return Promise.resolve(icon);
-        }
-        let temp_ = 'https://jsd.seeku.site/yzyyz1387/hamSoftware/img/' + icon;
-        return axios.get(temp_)
-          .then((url_)=>{
+    loadImg(icon) {
+      const urlPattern = /^(http|https):\/\/[a-zA-Z0-9\\-\\.]+(\.[a-zA-Z]{2,})+(\/\S*)?$/;
+      if (urlPattern.test(icon)) {
+        return Promise.resolve(icon);
+      }
+      let temp_ = 'https://jsd.seeku.site/yzyyz1387/hamSoftware/img/' + icon;
+      return axios.get(temp_)
+          .then((url_) => {
             let imgSrc = url_.data['url'];
-            if(!imgSrc){
+            if (!imgSrc) {
               imgSrc = defaultImage;
             }
             return imgSrc;
@@ -123,8 +125,8 @@ export default {
           .catch((error) => {
             return defaultImage;
           });
-      },
-    getClass(url){
+    },
+    getClass(url) {
       const urlToClassMap = {
         'github': 'fa-github',
         'bilibili': 'fa-film',
@@ -143,21 +145,31 @@ export default {
       }
       return 'fa fa-link';
     },
-  async fetchAndSetAppsData(platform) {
-    // 清空 imgSrcs
-    this.imgSrcs = {};
-    let apps = await this.updateData(platform);
-    this.originalApps = JSON.parse(JSON.stringify(apps));
-    this.apps = { ...apps };
-    this.girdControl();
-    this.applySearchFilter();
-    // 更新 imgSrcs
-    for (const [key, item] of Object.entries(this.apps)) {
-      this.loadImg(item.icon).then(imgSrc => {
-        this.$set(this.imgSrcs, key, imgSrc);
-      });
-    }
-  },
+    async fetchAndSetAppsData(platform) {
+      // 保存旧的 imgSrcs
+      const oldImgSrcs = { ...this.imgSrcs };
+      let apps = await this.updateData(platform);
+      this.originalApps = JSON.parse(JSON.stringify(apps));
+      this.apps = { ...apps };
+      this.girdControl();
+      this.applySearchFilter();
+      // 清空 imgSrcs
+      this.imgSrcs = {};
+      // 更新 imgSrcs
+      for (const [key, item] of Object.entries(this.apps)) {
+        this.loadImg(item.icon).then(imgSrc => {
+          this.$set(this.imgSrcs, key, imgSrc);
+          // 清空旧的 imgSrcs
+          if (oldImgSrcs[key]) {
+            delete oldImgSrcs[key];
+          }
+        });
+      }
+      // 清空剩余的旧的 imgSrcs
+      for (const key in oldImgSrcs) {
+        delete this.imgSrcs[key];
+      }
+    },
     applySearchFilter() {
       let searchKey = this.searchKey.toLowerCase();
       let isChinese = /[\u4e00-\u9fa5]/.test(searchKey);
@@ -169,7 +181,7 @@ export default {
       let apps = this.originalApps;
       let filteredApps = {};
       if (searchKey[0] === '') {
-        this.apps = { ...apps };
+        this.apps = {...apps};
         return;
       }
       for (const [key, value] of Object.entries(apps)) {
@@ -187,17 +199,17 @@ export default {
       }
       this.apps = filteredApps;
     },
-    async updateData(platform){
-      let dataUrlMap={ 
+    async updateData(platform) {
+      let dataUrlMap = {
         'm': 'https://jsd.seeku.site/yzyyz1387/hamSoftware/res-m.json',
         'pc': 'https://jsd.seeku.site/yzyyz1387/hamSoftware/res-pc.json',
         'web': 'https://jsd.seeku.site/yzyyz1387/hamSoftware/res-web.json'
       }
       let trueUrl;
       await axios.get(dataUrlMap[platform])
-      .then((url_)=>{
-        trueUrl = url_.data['url'];
-      });
+          .then((url_) => {
+            trueUrl = url_.data['url'];
+          });
       if (trueUrl) {
         try {
           let appList = await axios.get(trueUrl);
@@ -206,79 +218,82 @@ export default {
         } catch (error) {
           console.log(error);
           let temp_ = {
-              "暂无资源": {
-                "name": "暂无资源",
-                "dec": "...",
-                "zh-CN": true,
-                "icon": "loading.gif",
-                "ver": "暂无资源",
-                "platform": "暂无资源",
-                "url": "",
-                "related-url": ""
-              },
+            "暂无资源": {
+              "name": "暂无资源",
+              "dec": "...",
+              "zh-CN": true,
+              "icon": "loading.gif",
+              "ver": "暂无资源",
+              "platform": "暂无资源",
+              "url": "",
+              "related-url": ""
+            },
           };
           this.apps = temp_;
           return temp_;
         }
       }
     },
-    girdControl(){
+    girdControl() {
       if (Object.keys(this.apps).length === 1) {
-        this.gridClass =  'grid-one';
-      }
-      else{
-         this.gridClass =  'grid-div';
+        this.gridClass = 'grid-one';
+      } else {
+        this.gridClass = 'grid-div';
       }
     },
-      getStatusClass(status) {
-        if (status === 200) {
-          return 's-txt-green';
-        } else if ((status >= 300 && status < 400) || status === "unknown") {
-          return 's-txt-yellow';
-        }
-        else {
-          return '';
-        }
-      },
+    getStatusClass(status) {
+      if (status === 200) {
+        return 's-txt-green';
+      } else if ((status >= 300 && status < 400) || status === "unknown") {
+        return 's-txt-yellow';
+      } else {
+        return '';
+      }
+    },
   }
 };
 </script>
 
 <style>
 
-.search{
-    margin: 30px 0 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search {
+  margin: 30px 0 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.search-input{
-    width: 50%;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-size: 16px;
+
+.search-input {
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
 }
-.status{
-    padding: 5px;
-    border-radius: 5px;
-    /* 显示在父控件右上角 */
-    position: absolute;
-    left: 0px;
-    top:0px
+
+.status {
+  padding: 5px;
+  border-radius: 5px;
+  /* 显示在父控件右上角 */
+  position: absolute;
+  left: 0px;
+  top: 0px
 }
-.status-txt{
-    font-size: 12px;
-    color: #fff;
-    background-color: #ff0000;
-    padding: 5px;
-    border-radius: 5px;
+
+.status-txt {
+  font-size: 12px;
+  color: #fff;
+  background-color: #ff0000;
+  padding: 5px;
+  border-radius: 5px;
 }
-.s-txt-green{
-    background-color: #13bd60;
+
+.s-txt-green {
+  background-color: #13bd60;
 }
-.s-txt-yellow{
-    background-color: #ff9d00;
+
+.s-txt-yellow {
+  background-color: #ff9d00;
 }
 </style>
