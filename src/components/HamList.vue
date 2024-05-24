@@ -8,19 +8,25 @@
             投稿请至<a href="https://github.com/yzyyz1387/hamSoftware" target="_blank">Github</a>提交PR，或联系BD8CWG
         </div>
     </div>
-    <div class="copyright"> Copyright © <a href="https://yzyyz.top/" target="_blank">BD8CWG</a> {{copyyear}}</div>
+      <div class="copyright">
+        <span class="icp">
+            <a href="http://beian.miit.gov.cn/" target="_blank">{{ icp }}</a>
+          </span> |
+        Copyright © <a href="https://yzyyz.top/" target="_blank">BD8CWG</a> {{copyyear}}</div>
 </div>
 </template>
 
 <script>
 import axios from 'axios';
+import config from '../config.js';
 
 export default {
     name:'HamList',
     data(){
         return{
             hams:['BD8CWG'],
-            copyyear:''
+            copyyear:'',
+            icp: config.icp
             };
     },
     async created() {
@@ -39,6 +45,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.icp a{
+  color: #888;
 
+}
+.icp::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("../assets/icp.png") no-repeat;
+  background-size: 100%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
 </style>
