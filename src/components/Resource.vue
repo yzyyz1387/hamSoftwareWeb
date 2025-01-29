@@ -4,12 +4,11 @@
       <input type="text" v-model="searchKey" placeholder="搜索应用名称、描述、链接" class="search-input">
     </div>
     <div class="container flex-div" v-if="Object.keys(apps).length>0">
-
       <div class="app-list" :class="gridClass">
-        <div class="app flex-div " v-for="(item,i) in apps" :key="i">
+        <a v-for="(item,i) in apps" :key="i" :href="item.platform === 'WEB' ? item.url : '#'" target="_blank" class="app flex-div" :class="{ 'app-link': item.platform === 'WEB' }">
           <img :src="imgSrcs[i]" alt="" class="app-icon" @error="setDefaultImage">
           <div class="app-info">
-            <p class="app-name ">
+            <p class="app-name">
               {{ item.name }}
             </p>
             <div class="app-detail flex-div ">
@@ -28,7 +27,7 @@
                 {{ item.dec }}
               </p>
               <a v-if="item.url" :href="item.url" target="_blank" class="download-btn flex-div">
-                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                <i :class="item.platform === 'WEB' ? 'fa fa-home' : 'fa fa-arrow-down'" aria-hidden="true"></i>
               </a>
               <a v-if="item['related-url']" :href="item['related-url']" target="_blank" class="related-btn flex-div"
                  title="相关链接">
@@ -39,7 +38,7 @@
           <div class="status" v-if="item.status !== undefined && item.status !== null">
             <span class="status-txt" :class="getStatusClass(item.status)" title="网站状态"> ● {{ item.status }}</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="applist load flex-div-col" v-else>
@@ -48,7 +47,6 @@
       <p v-else>加载中...</p>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -79,15 +77,13 @@ export default {
         });
       }
     });
-
   },
   watch: {
     '$route.params.platform': {
       immediate: true,
       handler: 'fetchAndSetAppsData'
     },
-    apps:
-        {
+    apps: {
           immediate: true,
           handler: function () {
             this.girdControl();
