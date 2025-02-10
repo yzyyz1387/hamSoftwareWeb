@@ -46,10 +46,22 @@ export default {
 </script>
 
 <style scoped>
+/* 呼号悬停效果 */
+.call {
+  position: relative;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+
+.call:hover {
+  color: #0ea5e9;
+}
+
+/* 保持其他样式不变 */
 .icp a{
   color: #888;
-
 }
+
 .icp::before {
   content: "";
   display: inline-block;
