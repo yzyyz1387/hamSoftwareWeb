@@ -12,6 +12,12 @@ export default new VueRouter({
                 window.location.replace('/qbg.html');
             }
         },
+        {
+            path: '/ksr',
+            beforeEnter(to, from, next) {
+                window.location.replace('/ksr/');
+            }
+        },
         { path: '/:platform', component: Resource },
         { path: '/', redirect: '/m' },
 
