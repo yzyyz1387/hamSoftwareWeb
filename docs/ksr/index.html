@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="uSDX是一款全模式、低成本的开源短波电台，支持SSB、CW、AM和FM。由QCX-SSB开源硬件优化而来，采用8位单片机实现强大的软件支持。">
+    <meta name="keywords" content="uSDX,短波电台,开源电台,QRP,业余无线电,ham radio,SSB,CW,全模式,低成本">
+    <meta name="author" content="@Syryia(BI4KSR)">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="uSDX - 开源短波电台">
+    <meta property="og:description" content="全模式、低成本的开源短波电台，支持SSB、CW、AM和FM。功率3-5W，支持80m-10m八个业余频段。">
+    <meta property="og:image" content="/ksr/assets/front_left_view.png">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="uSDX - 开源短波电台">
+    <meta name="twitter:description" content="全模式、低成本的开源短波电台，支持SSB、CW、AM和FM。功率3-5W，支持80m-10m八个业余频段。">
+    <meta name="twitter:image" content="/ksr/assets/front_left_view.png">
+    
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://your-domain.com">
+    
+    <title>uSDX - 开源短波电台 | 全模式 低成本 开源设计</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="/ksr/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/ksr/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ksr/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/ksr/assets/apple-touch-icon.png">
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "uSDX 开源短波电台",
+      "description": "全模式、低成本的开源短波电台，支持SSB、CW、AM和FM。功率3-5W，支持80m-10m八个业余频段。",
+      "brand": {
+        "@type": "Brand",
+        "name": "uSDX"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      },
+      "category": "业余无线电设备"
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">uSDX</div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#intro">简介</a></li>
+                <li><a href="#features">特性</a></li>
+                <li><a href="#specs">规格</a></li>
+                <li><a href="#usage">使用指南</a></li>
+                <li><a href="#menu">菜单功能</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">加入我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-text">
+                    <div class="title-line">
+                        <h1>uSDX</h1><span class="version-this">V2.7.1</span>
+                    </div>
+                    <p class="author">@Syryia</p>
+                    <p>全模式 · 低成本 · 开源设计</p>
+                </div>
+                <div class="hero-image" data-scroll-parallax>
+                    <img src="/ksr/assets/front_left_view.png" alt="uSDX左前视图" class="parallax-image">
+                </div>
+            </div>
+            <div class="scroll-to-top">
+                <i class="fas fa-chevron-up fa-rotate-180"></i>
+            </div>
+        </section>
+
+        <section class="product-angles">
+            <div class="angle-grid">
+                <div class="angle-item" data-aos="fade-up">
+                    <img src="/ksr/assets/front_left_view.png" alt="左前视图" class="angle-image">
+                    <p>左前视角</p>
+                </div>
+                <div class="angle-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="/ksr/assets/front_right_view.png" alt="右前视图" class="angle-image">
+                    <p>右前视角</p>
+                </div>
+                <div class="angle-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/ksr/assets/front_view.png" alt="正前视图" class="angle-image">
+                    <p>正前视角</p>
+                </div>
+                <div class="angle-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/ksr/assets/topview.png" alt="顶部视图" class="angle-image">
+                    <p>顶部视角</p>
+                </div>
+            </div>
+            <p class="support-note">注：图中支架为用户自行添加，套件中无</p>
+        </section>
+
+        <section id="intro" class="intro">
+            <h2 data-aos="fade-up">产品简介</h2>
+            <div class="intro-content" data-aos="fade-up">
+                <p>uSDX 是一个全模式、低成本的开源短波电台，支持 SSB、CW、AM 和 FM，它由 QCX-SSB 开源硬件优化而来，采用 8 位单片机 (ATmaga328) 实现强大的软件支持，以更少的硬件完成 SW 收发</p>
+                
+                <p>本项目由<a href="https://forum.hamcq.cn/d/2905" target="_blank"><strong>@Syryia(BI4KSR)</strong></a>主导（爱KSR喵🥵），采用王老师八波段的版本 uSDX，开源地址: <a href="https://gitee.com/csqwdy/usdx" target="_blank">Gitee</a>
+                     它采用铝制外壳，尺寸 82.8*28.8*110mm (不含突出物)，前面板为按钮、编码器旋钮和 1602N 液晶屏，后面板为天线、耳机、电源等输入输出接口，功率 3-5w，与经典的 QRP 商用电台比较类似</p>
+                
+                <div class="schematic-diagram">
+                    <img src="/ksr/assets/dlt.png" alt="uSDX电路图" class="schematic-image">
+                    <p class="schematic-caption">电路原理图</p>
+                </div>
+                
+                <div class="schematic-diagram">
+                    <img src="/ksr/assets/show1.jpg" alt="uSDX开团展示" class="schematic-image">
+                    <p class="schematic-caption">开团展示</p>
+                </div>
+                
+                <div class="version-info">
+                    <h3>开源版本</h3>
+                    <ul>
+                        <li>WB2CBA 版本：提供三波段、单波段和八波段多个版本 
+                            <a href="https://antrak.org.tr/blog/usdx-triband-sdr-all-mode-qrp-transceiver" target="_blank">项目链接</a>
+                        </li>
+                        <li>DL2MAN 版本：目前已支持8波段
+                            <a href="https://dl2man.de/" target="_blank">项目链接</a>
+                        </li>
+                        <li>源代码由 Guido 创建维护
+                            <a href="https://github.com/threeme3/QCX-SSB" target="_blank">项目链接</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="notice">
+                    <p class="important">请注意：这是一个简易的短波收发机，适合学习研究使用。不建议将其作为商用电台的替代品，AM/FM 模式为附加功能，请不要对其效果抱有太高期望。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2 data-aos="fade-up">核心特性</h2>
+            <div class="feature-grid">
+                <div class="feature-item" data-aos="fade-up">
+                    <h3>全模式支持</h3>
+                    <p>支持 USB、LSB、CW、AM、FM 等多种模式，接收质量优秀</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up">
+                    <h3>多频段支持</h3>
+                    <p>支持 80m-10m 八个业余频段，0-30MHz 连续可调</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up">
+                    <h3>DSP 功能</h3>
+                    <p>自动增益控制(AGC)、降噪(NR)、语音触发 PTT (VOX)等</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up">
+                    <h3>数字滤波</h3>
+                    <p>支持 4000、2500、1700、500、200、100、50 Hz 多种滤波器</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="specs" class="menu">
+            <h2 data-aos="fade-up">技术规格</h2>
+            <div class="menu-content" data-aos="fade-up">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>硬件规格</h3>
+                        <ul>
+                            <li>外壳尺寸：82.8×28.8×110mm</li>
+                            <li>输出功率：3-5W</li>
+                            <li>工作电压：9-13.8V (最高15V)</li>
+                            <li>待机电流：<90mA</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>接口配置</h3>
+                        <ul>
+                            <li>耳机输出接口 (HP)</li>
+                            <li>CAT及PTT_OUT接口</li>
+                            <li>MIC话筒及电键接口</li>
+                            <li>BNC天线接口</li>
+                            <li>内置带腔体喇叭</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product-gallery" data-aos="fade-up">
+                <div class="panel-item">
+                    <img src="/ksr/assets/f_b.png" alt="前面板示意图" class="gallery-image">
+                    <p class="panel-label">前面板</p>
+                </div>
+                <div class="panel-item">
+                    <img src="/ksr/assets/b_b.png" alt="后面板示意图" class="gallery-image">
+                    <p class="panel-label">后面板</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="menu">
+            <h2 data-aos="fade-up">使用指南</h2>
+            <div class="menu-content" data-aos="fade-up">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>使用建议</h3>
+                        <ul>
+                            <li>建议音量不超过13，14-16预留给弱信号使用</li>
+                            <li>弱信号接收可尝试关闭AGC或设置为FAST模式</li>
+                            <li>建议使用线性电源而非开关电源</li>
+                            <li>请勿使用有源天线发射，以免损坏设备</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>基本操作</h3>
+                        <ul>
+                            <li>恢复默认设置 - 按住编码器并通电</li>
+                            <li>调谐频率 - 旋转编码器</li>
+                            <li>选择菜单 - 短按MENU一次，然后旋转编码器</li>
+                            <li>确定调整菜单参数 - 短按MENU一次</li>
+                            <li>菜单后退 - 短按EXIT一次</li>
+                            <li>RIT或RIT返回 - 长按EXIT</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+             <section id="optimization" class="optimization">
+            <div class="quote-box">
+                <div class="quote-header">
+                    <span class="quote-icon">💡</span>
+                    <h3>功率优化建议</h3>
+                    
+                </div>
+                <ul>
+                    <li>20米段：12匝黄磁环改绕10匝，改后功率可达5.5W</li>
+                    <li>15米段：9匝磁环改绕8匝，改后功率可达6.1W</li>
+                    <li>10米段：8匝磁环改绕7匝，改后功率可达4.3W</li>
+                    <li>注：PA bias均为180</li>
+                </ul>
+                <div class="quote-footer">
+                    <span class="quote-author">来自 BH3PTS</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <h2 data-aos="fade-up">菜单说明</h2>
+            <div class="menu-content" data-aos="fade-up">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>基础设置 (1.x)</h3>
+                        <ul>
+                            <li>Volume - 音量控制</li>
+                            <li>Mode - 工作模式</li>
+                            <li>Filter BW - 滤波器带宽</li>
+                            <li>Band - 波段选择</li>
+                            <li>Tuning Rate - 调谐步进</li>
+                            <li>VFO Mode - VFO模式</li>
+                            <li>RIT - 接收增量调谐</li>
+                            <li>AGC - 自动增益控制</li>
+                            <li>NR - 降噪功能</li>
+                            <li>ATT - 衰减器</li>
+                            <li>ATT2 - 衰减器2</li>
+                            <li>S-meter - 信号强度表</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>CW设置 (2.x)</h3>
+                        <ul>
+                            <li>CW Decoder - CW解码器</li>
+                            <li>CW Tone - CW音调</li>
+                            <li>CW Offset - CW偏移</li>
+                            <li>Semi QSK - 半断键</li>
+                            <li>Keyer speed - 键速</li>
+                            <li>Keyer mode - 键控模式</li>
+                            <li>Keyer swap - 键位交换</li>
+                            <li>Practice - 练习模式</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>发射设置 (3.x)</h3>
+                        <ul>
+                            <li>VOX - 声控发射</li>
+                            <li>Noise Gate - 噪声门限</li>
+                            <li>TX Drive - 发射驱动</li>
+                            <li>TX Delay - 发射延时</li>
+                            <li>MOX - 手动发射</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>CW消息 (4.x)</h3>
+                        <ul>
+                            <li>CQ Interval - CQ间隔</li>
+                            <li>CQ Message - CQ信息</li>
+                            <li>CW Message 2-6 - CW信息2-6</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>硬件设置 (8.x)</h3>
+                        <ul>
+                            <li>PA Bias min - PA偏置最小值</li>
+                            <li>PA Bias max - PA偏置最大值</li>
+                            <li>Ref freq - 参考频率</li>
+                            <li>IQ Phase - IQ相位</li>
+                        </ul>
+                    </div>
+                    <div class="menu-item">
+                        <h3>系统设置 (9.x-10.x)</h3>
+                        <ul>
+                            <li>Sample rate - 采样率</li>
+                            <li>CPU load - CPU负载</li>
+                            <li>Param A/B/C - 参数A/B/C</li>
+                            <li>Backlight - 背光设置</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq" class="faq">
+            <h2 data-aos="fade-up">常见问题</h2>
+            <div class="faq-content" data-aos="fade-up">
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>收到套件后我该做什么？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>你需要提前网购外壳、0.5mm漆包线。收到套件后：
+                                <br>1、按照教程在磁环上绕制线圈，并将其焊接到电路板对应位置
+                                <br>2、将编码器底座从电路板上拆下
+                                <br>3、焊接编码器、底座、喇叭、天线座和场效应管等
+                                <br>4、连接屏幕、固定面板
+                                <br>5、将电路板装入外壳，并固定好
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>如何调整发射功率？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>通过调整 PA Bias 参数来改变发射功率：
+                                <br>1、在菜单中找到 PA Bias (8.x) 选项
+                                <br>2、根据需要调整数值，建议20米段设置为180
+                                <br>3、注意不要超过推荐值，以免损坏设备
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>为什么接收信号很弱？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>可能的原因和解决方案：
+                                <br>1、天线匹配不良 - 检查天线SWR
+                                <br>2、AGC设置不当 - 尝试调整AGC模式（FAST/SLOW）
+                                <br>3、滤波器带宽设置过窄 - 适当增加滤波器带宽
+                                <br>4、音量设置过低 - 建议音量不超过13，14-16预留给弱信号
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>如何进行固件更新？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>需要使用Arduino IDE通过ICSP接口进行更新：
+                                <br>1、下载最新固件
+                                <br>2、安装Arduino IDE
+                                <br>3、连接ICSP编程器
+                                <br>4、选择正确的板型（Arduino Nano）和端口
+                                <br>5、上传固件
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 data-aos="fade-up" class="join-us">加入我们</h2>
+            <div class="contact-content" data-aos="fade-up">
+                <div class="contact-grid">
+                    <div class="links-section">
+
+                        <ul>
+                            <p class="links-title">相关链接</p>
+                            <li><a href="https://github.com/threeme3/QCX-SSB" target="_blank">软件开源地址</a></li>
+                            <li><a href="https://dl2man.de/" target="_blank">硬件开源站点</a></li>
+                            <li><a href="https://groups.io/g/ucx/topics" target="_blank">讨论组</a></li>
+                            <li><a href="https://forum.hamcq.cn/d/2905" target="_blank">uSDX 详细篇</a></li>
+                            <li><a href="https://yzyyz.top" target="_blank">幼稚园园长</a></li>
+                        </ul>
+                    </div>
+                    <div class="qr-section">
+                        <img src="/ksr/assets/qrcode.png" alt="QQ群二维码" class="qr-code">
+                        <p class="qr-text">QQ扫码，了解更多</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+   
+    </main>
+
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <footer>
+        <p>© 2024 uSDX. 开源项目</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- 在 body 末尾添加灯箱容器 -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+</body>
+</html> 
