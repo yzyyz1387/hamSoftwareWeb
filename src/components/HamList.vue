@@ -5,14 +5,14 @@
                 <span class="call" v-for="(ham,i) in hams" :key="i" >{{ ham }}</span>
         </div>
         <div class="note">
-            投稿请至<a href="https://github.com/yzyyz1387/hamSoftware" target="_blank">Github</a>提交PR，或联系BD8CWG
+            投稿请至<a href="https://github.com/yzyyz1387/hamSoftware" target="_blank">Github</a>提交PR，或联系BG0CV
         </div>
     </div>
       <div class="copyright">
         <span class="icp">
             <a href="http://beian.miit.gov.cn/" target="_blank">{{ icp }}</a>
           </span> |
-        Copyright © <a href="https://yzyyz.top/" target="_blank">BD8CWG</a> {{copyyear}}</div>
+        Copyright © <a href="https://yzyyz.top/" target="_blank">BG0CV</a> {{copyyear}}</div>
 </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
     name:'HamList',
     data(){
         return{
-            hams:['BD8CWG'],
+            hams:['BG0CV'],
             copyyear:'',
             icp: config.icp
             };
